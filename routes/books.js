@@ -1,39 +1,38 @@
+var data = require('../src/data');
 var express = require('express');
 var router = express.Router();
 
-var bookData = [{name: "test book 1",
-            author: 25},
-            {name: "test book 2",
-            author: 445}];
+//
+// implement functionality
+//
 
 function getAllBooks(req,res,next)
 {
-    res.json(bookData);
+    res.json(data.getAllBooks());
 }
 
-function newBook(req,res,next)
+function postNewBook(req,res,next)
 {
+    // post parameters are available through req.body    
     res.sendStatus(200);
 }
 
+
+//
+// Declare routes
+//
+
 router.route('/books')
     .get(getAllBooks)
-    .post(newBook);
-
+    .post(postNewBook);
 
 router.route('/books/:id')
     .get(function(req,res,next){
-        
-        console.log(req.params);
-        res.send("request book id " + req.params.id);
-    })
-    .post(function(req,res,next){
-        res.send("post books");
-    })
+        // the id parameter is available at req.params        
+        res.json(data.getById(req.params.id));                
+    })    
     .delete(function(req,res,next){
-        res.send("delete books");
+        res.send("delete book");
     });
-
- 
 
 module.exports = router;
