@@ -29,7 +29,7 @@ exports.getAllBooks = function()
     return bookData;
 }
 
-exports.getById = function(id)
+exports.getBookById = function(id)
 {
     return bookData.filter(function(book){
         if(book.id == id)
@@ -37,6 +37,11 @@ exports.getById = function(id)
             return book;
         }
     });
+}
+
+exports.addBook = function(book)
+{
+    bookData.push(book);
 }
 
 exports.getAuthors = function()

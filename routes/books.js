@@ -13,10 +13,11 @@ function getAllBooks(req,res,next)
 
 function postNewBook(req,res,next)
 {
-    // post parameters are available through req.body    
-    res.sendStatus(200);
+    // Post parameters are available through req.body
+    // Notice that you really should do some validation before accepting the body
+    data.addBook(req.body);
+    res.sendStatus(201);
 }
-
 
 //
 // Declare routes
@@ -29,7 +30,7 @@ router.route('/books')
 router.route('/books/:id')
     .get(function(req,res,next){
         // the id parameter is available at req.params        
-        res.json(data.getById(req.params.id));                
+        res.json(data.getBookById(req.params.id));                
     })    
     .delete(function(req,res,next){
         res.send("delete book");
