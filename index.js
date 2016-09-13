@@ -17,8 +17,10 @@ app.use('/api', authors);
 
 // Simple hello world route
 app.get('/', function(req, res) {
-    res.send("Hello world");
+    res.send("Hello class");
 });
+
+
 
 // start listening for incoming HTTP connections
 app.listen(app.get('port'), function() {
