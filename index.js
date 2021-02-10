@@ -17,7 +17,7 @@ app.use('/api', authors);
 
 // Simple hello world route
 app.get('/', function(req, res) {
-    res.send("Hello class");
+    res.send("Hello class, this is automatic deploy demo");
 });
 
 
